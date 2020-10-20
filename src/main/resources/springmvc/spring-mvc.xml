@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置注解驱动 -->
+    <mvc:annotation-driven/>
+
+    <context:component-scan base-package="com.zjq.controller"/>
+
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/image/" mapping="/image/**"/>
+    <mvc:resources location="/layui/" mapping="/layui/**"/>
+    <mvc:resources location="/WEB-INF/" mapping="/WEB-INF/**"/>
+
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 定义文件上传解析器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设定默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+        <property name="maxUploadSize" value="5242880"/>
+    </bean>
+
+    <!-- 接口跨域配置 -->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-methods="POST, GET, OPTIONS, DELETE, PUT"
+                     allowed-headers="*"
+                     allow-credentials="true" />
+    </mvc:cors>
+
+
+    <!-- 登录拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 拦截mvc控制器 -->
+            <mvc:mapping path="/admin/**"/>
+
+            <mvc:exclude-mapping path="/admin/checkLogin"/>
+            <mvc:exclude-mapping path="/admin/login"/>
+            <mvc:exclude-mapping path="/admin/addUser"/>
+            <mvc:exclude-mapping path="/admin/loginOut"/>
+            <mvc:exclude-mapping path="/admin/tip"/>
+            <mvc:exclude-mapping path="/admin/checkAdminName/*"/>
+            <mvc:exclude-mapping path="/admin/checkAdminName"/>
+            <mvc:exclude-mapping path="/admin/checkUserEmail/*"/>
+            <mvc:exclude-mapping path="/admin/checkUserEmail"/>
+            <mvc:exclude-mapping path="/admin/insertUser"/>
+            <mvc:exclude-mapping path="/admin/forgetPass"/>
+            <mvc:exclude-mapping path="/admin/findPassword"/>
+            <bean class="com.zjq.interceptor.AdminLoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+    <!-- 后台管理拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 拦截mvc控制器 -->
+            <mvc:mapping path="/admin/**"/>
+
+            <mvc:exclude-mapping path="/admin/checkLogin"/>
+            <mvc:exclude-mapping path="/admin/login"/>
+            <mvc:exclude-mapping path="/admin/addUser"/>
+            <mvc:exclude-mapping path="/admin/loginOut"/>
+            <mvc:exclude-mapping path="/admin/tip"/>
+            <mvc:exclude-mapping path="/admin/checkAdminName/*"/>
+            <mvc:exclude-mapping path="/admin/checkAdminName"/>
+            <mvc:exclude-mapping path="/admin/checkUserEmail/*"/>
+            <mvc:exclude-mapping path="/admin/checkUserEmail"/>
+            <mvc:exclude-mapping path="/admin/insertUser"/>
+            <mvc:exclude-mapping path="/admin/forgetPass"/>
+            <mvc:exclude-mapping path="/admin/findPassword"/>
+
+            <mvc:exclude-mapping path="/admin/tip2"/>
+            <mvc:exclude-mapping path="/admin/person"/>
+            <mvc:exclude-mapping path="/admin/addNote"/>
+            <mvc:exclude-mapping path="/admin/insNote"/>
+            <mvc:exclude-mapping path="/admin/personalData"/>
+            <mvc:exclude-mapping path="/admin/updateInfo/"/>
+            <mvc:exclude-mapping path="/admin/updateAdmin"/>
+            <mvc:exclude-mapping path="/admin/changePassword"/>
+            <mvc:exclude-mapping path="/admin/changeAdminPassword"/>
+            <mvc:exclude-mapping path="/admin/userNoteList"/>
+            <mvc:exclude-mapping path="/admin/getNotCheckNoteList"/>
+            <mvc:exclude-mapping path="/admin/getUserNoteList"/>
+            <mvc:exclude-mapping path="/admin/sMNote"/>
+            <mvc:exclude-mapping path="/admin/getSMNoteList"/>
+            <mvc:exclude-mapping path="/admin/cGNote"/>
+            <mvc:exclude-mapping path="/admin/getCGNoteList"/>
+            <mvc:exclude-mapping path="/admin/getRemark"/>
+            <mvc:exclude-mapping path="/admin/getSelfRemarkList"/>
+            <mvc:exclude-mapping path="/admin/replaceEmail"/>
+            <mvc:exclude-mapping path="/admin/updateEmail"/>
+            <mvc:exclude-mapping path="/admin/confirmEmail"/>
+            <mvc:exclude-mapping path="/admin/updateNoteOpenStatusById"/>
+            <mvc:exclude-mapping path="/admin/editNote/*"/>
+            <mvc:exclude-mapping path="/admin/updateNote"/>
+            <mvc:exclude-mapping path="/admin/showNote/*"/>
+            <mvc:exclude-mapping path="/admin/delNoteById/*"/>
+            <mvc:exclude-mapping path="/admin/delRemarkById/*"/>
+            <bean class="com.zjq.interceptor.AdminInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--  class：发送邮件的核心代码的位置  -->
+    <bean id="sendMailUtil" class="com.zjq.utils.SendMailUtil">
+        <!--  给属性赋值  name:账号   pwd:授权码 -->
+        <property name="sendEmail" value="myjoycloudnotes@foxmail.com"/>
+        <property name="pwd" value="ojiixgsdniosbbdj"/>
+    </bean>
+</beans>

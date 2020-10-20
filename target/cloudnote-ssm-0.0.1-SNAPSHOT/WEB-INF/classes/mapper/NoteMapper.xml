@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjq.dao.NoteDao">
+
+    <resultMap id="Note" type="com.zjq.entity.Note">
+        <id property="id" column="id"/>
+        <result property="image" column="image"/>
+        <result property="title" column="title"/>
+        <result property="abstr" column="abstr"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userId" column="user_id"/>
+        <result property="isOpen" column="is_open"/>
+        <result property="uploadStatus" column="upload_status"/>
+        <result property="checkStatus" column="check_status"/>
+        <result property="viewNum" column="view_num"/>
+
+    </resultMap>
+    <update id="updNote" parameterType="com.zjq.entity.Note">
+        update note
+        <set>
+            <if test="image !=null">
+                image = #{image},
+            </if>
+            <if test="title !=null">
+                title = #{title},
+            </if>
+            <if test="abstr !=null">
+                abstr = #{abstr},
+            </if>
+            <if test="content !=null">
+                content = #{content},
+            </if>
+            <if test="createTime !=null">
+                create_time = #{createTime},
+            </if>
+            <if test="isOpen !=null">
+                is_open = #{isOpen},
+            </if>
+            <if test="uploadStatus !=null">
+                upload_status = #{uploadStatus},
+            </if>
+            <if test="viewNum !=null">
+                view_num = #{viewNum},
+            </if>
+            check_status = 100,
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="getNoteList" resultMap="Note" parameterType="com.zjq.entity.Search">
+        select * from note
+        <where>
+            1=1
+            <if test="null != noteTitle and '' != noteTitle">
+                and title like "%"#{noteTitle}"%"
+            </if>
+            <if test="null != uploadStatus and '' != uploadStatus">
+                and upload_status = #{uploadStatus}
+            </if>
+            <if test="null != isOpen and '' != isOpen">
+                and is_open = #{isOpen}
+            </if>
+            <if test="null != checkStatus and '' != checkStatus">
+                and check_status = #{checkStatus}
+            </if>
+            <if test="null != userId and '' != userId">
+                and user_id = #{userId}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getHotNote" resultMap="Note">
+        select * from note
+        <where>
+            is_open = 101
+            and upload_status = 101
+            and check_status = 101
+        </where>
+        order by view_num desc limit 8
+    </select>
+
+    <select id="getForeNoteList" resultMap="Note">
+        select * from note
+        <where>
+            is_open = 101
+            and upload_status = 101
+            and check_status = 101
+            <if test="null != title and '' != title">
+                and title like "%"#{title}"%"
+            </if>
+        </where>
+        order by create_time desc
+
+    </select>
+
+    <select id="getNoteById" resultMap="Note">
+        select * from note
+        where id=#{id}
+    </select>
+
+    <update id="updateNoteCheckStatusById">
+        update note
+        <set>
+            <if test="checkStatus != null">
+                check_status = #{checkStatus},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateNoteOpenStatusById">
+        update note
+        <set>
+            <if test="isOpen != null">
+                is_open = #{isOpen},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateNoteViewNumById">
+        update note
+        <set>
+            <if test="viewNum != null">
+                view_num = #{viewNum},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <insert id="insNote" parameterType="com.zjq.entity.Note">
+        insert into note (image,title,abstr,content,create_time,user_id,is_open,upload_status,check_status,view_num)
+        values (#{image},#{title},#{abstr},#{content},#{createTime},#{userId},#{isOpen},#{uploadStatus},100,0)
+    </insert>
+    <delete id="delNoteById">
+		delete from note
+		where id = #{id}
+	</delete>
+
+    <select id="getOpenAndCloseCount" resultType="java.util.HashMap">
+        SELECT COUNT(CASE WHEN is_open=101 and check_status=101 then is_open else null end) as opencount,COUNT(CASE WHEN is_open=100 then is_open else null end) as closecount
+        FROM note
+    </select>
+
+    <select id="getNoteCount" resultType="java.util.HashMap">
+        SELECT COUNT(id) as notecount
+        FROM note
+        where check_status=101 and is_open=101
+    </select>
+
+    <select id="getViewCount" resultType="java.util.HashMap">
+        SELECT sum(view_num) as viewcount
+        FROM note
+    </select>
+
+
+</mapper>

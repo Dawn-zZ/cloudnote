@@ -1,0 +1,123 @@
+.header {
+    background: url(../../image/banner.png) no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    padding-top: 19em;
+    min-height: 400px;
+    text-align: center;
+}
+
+.header h2 {
+    color: #fff;
+    font-size: 2em;
+    padding-top: 2em;
+    font-family: 'Aller_Bd';
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.header s {
+    height: 2px;
+    width: 8%;
+    background: #fff;
+    display: inline-block;
+}
+
+.introduct {
+    padding: 5em 0;
+    text-align: center;
+}
+
+.introduct h2, .work h2 {
+    color: #222;
+    font-family: 'Aller_Bd';
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 5px;
+    margin-bottom: 1em;
+}
+
+.introduct span, span.work_line {
+    height: 2px;
+    width: 8%;
+    background: #222;
+    display: inline-block;
+}
+
+.introduct p, .about p, .touch p {
+    color: #222;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 1.3em;
+    line-height: 1.8em;
+    margin-top: 2em;
+}
+
+/* Button 1 */
+.fa-btn {
+    background: none;
+    cursor: pointer;
+    padding: 25px 70px;
+    display: inline-block;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    font-size: 2em;
+}
+
+.fa-btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn-1 {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+/* Button 1e */
+.btn-1e {
+    overflow: hidden;
+}
+
+.btn-1e:after {
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    background: #009688;
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.btn-1e:hover, .btn-1e:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-1e:hover:after {
+    height: 260%;
+    opacity: 1;
+}
+
+.btn-1e:active:after {
+    height: 400%;
+    opacity: 1;
+}

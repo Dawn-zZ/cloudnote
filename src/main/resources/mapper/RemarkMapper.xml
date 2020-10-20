@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjq.dao.RemarkDao">
+
+    <resultMap id="Remark" type="com.zjq.entity.Remark">
+        <id property="remarkId" column="remark_id" />
+        <result property="content" column="content"/>
+        <result property="createTime" column="createtime"/>
+        <result property="userId" column="user_id"/>
+        <result property="noteId" column="note_id"/>
+        <result property="upStatus" column="upload_status"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="isParent" column="is_parent"/>
+        <result property="isLeaveMess" column="is_leavemess"/>
+
+    </resultMap>
+    <select id="getRemarksList" resultMap="Remark" parameterType="com.zjq.entity.Search">
+        select * from remark
+        <where>
+            1=1
+            <if test="null != upStatus and '' != upStatus">
+                and upload_status = #{upStatus}
+            </if>
+            <if test="null != userId and '' != userId">
+                and user_id = #{userId}
+            </if>
+            <if test="null != isLeaveMess and -1 != isLeaveMess and '' != isLeaveMess">
+                and is_leavemess = #{isLeaveMess}
+            </if>
+        </where>
+
+    </select>
+    <select id="getRemark" resultMap="Remark">
+        select * from remark
+        <where>
+            is_leavemess = 100
+            <if test="null != noteId and '' != noteId">
+                and note_id = #{noteId}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getLeaveMess" resultMap="Remark">
+        select * from remark
+        <where>
+            is_leavemess =101
+        </where>
+
+    </select>
+
+    <insert id="insRemark" parameterType="com.zjq.entity.Remark">
+        insert into remark (content,createtime,user_id,note_id,upload_status,parent_id,is_parent,is_leavemess)
+        values (#{content},#{createTime},#{userId},#{noteId},100,#{parentId},#{isParent},#{isLeaveMess})
+    </insert>
+
+    <delete id="delRemarkById">
+		delete from remark
+		where remark_id = #{remarkId}
+	</delete>
+
+</mapper>

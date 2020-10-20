@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* login */
+#canvas {
+	float: right;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-left: 5px;
+	background-color: white;
+}
+.userAdd_btn{
+	color: white;
+	margin-right: 3px;
+	cursor: pointer;
+}
+.changeLogin {
+	color: white;
+	margin-right: 3px;
+	cursor: pointer;
+}
+#forget{
+	color: white;
+	float:right;
+	cursor: pointer;
+}
+
+.login-main form .login-btn {
+	margin-bottom: 5px;
+}
+/* main */
+h1 {
+	margin-top: 100px;
+	text-align : center;
+	letter-spacing: 10px;
+	font-size: 55px;
+}
+.b {
+	position:absolute; right: 20px; top: 10px;
+	font-size: 28px;
+}
+.show{
+	position: absolute;
+	height: 155px;
+	width: 450px;
+	left: 50%;
+	margin-left: -225px;
+	bottom: 0;
+}
+.c h2{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 30px;
+	font-weight:400;
+}
+h2 {
+	text-align: center;
+	font-size: 30px;
+	font-weight:400;
+	letter-spacing: 6px;
+}
+
+.wrap {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	height: 400px;
+	width: 400px;
+	/*vertical-align: middle;*/
+}
+
+.wrap span {
+
+	display: inline-block;
+	vertical-align: middle;
+	letter-spacing: 8px;
+	font-size: 55px;
+}
+
+.wrap img {
+	height: auto;
+	margin: auto;
+	vertical-align: middle;
+}

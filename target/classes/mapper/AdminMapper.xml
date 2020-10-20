@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjq.dao.AdminDao">
+
+    <resultMap type="com.zjq.entity.Admin" id="Admin">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="image" column="image"/>
+        <result property="password" column="password"/>
+        <result property="nickname" column="nickname"/>
+        <result property="sex" column="sex"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="roleId" column="role_id"/>
+        <result property="isAdmin" column="is_admin"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="note" column="note"/>
+    </resultMap>
+
+    <select id="login" resultMap="Admin">
+        select * from admin
+        <where>
+            <if test="username != null">
+                and username = #{username}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insAdmin" parameterType="com.zjq.entity.Admin">
+		insert into admin (username,password,image,nickname,sex,phone,email,role_id,is_admin,status,create_time,note)
+		values(#{username},#{password},#{image},#{nickname},#{sex},#{phone},#{email},#{roleId},#{isAdmin},101,#{createTime},#{note})
+	</insert>
+
+    <update id="updAdmin"
+            parameterType="com.zjq.entity.Admin">
+        update admin
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="image != null">
+                image = #{image},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="isAdmin != null">
+                is_admin = #{isAdmin},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="note != null">
+                note = #{note},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="getAdminsList" resultMap="Admin" parameterType="com.zjq.entity.Search">
+        select * from admin
+        <where>
+            1=1
+            <if test="null != nickname and '' != nickname">
+                and nickname like "%"#{nickname}"%"
+            </if>
+            <if test="null != sex and -1 != sex">
+                and sex = #{sex}
+            </if>
+            <if test="null != status and -1 != status">
+                and status = #{status}
+            </if>
+            <if test="'' != isAdmin and '' != isAdmin">
+                and is_admin = #{isAdmin}
+            </if>
+            <if test="null != createTimeStart and null != createTimeEnd and '' != createTimeStart and '' != createTimeEnd">
+                and create_time between #{createTimeStart} and #{createTimeEnd}
+            </if>
+            <if test="'' != createTimeStart and '' == createTimeEnd">
+                and create_time between #{createTimeStart} and curtime()
+            </if>
+            <if test="'' == createTimeStart and '' != createTimeEnd">
+                and create_time between '1900-01-01 00:00:00' and #{createTimeEnd}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getAdminById" resultMap="Admin">
+		select * from admin
+		where id = #{id}
+	</select>
+
+    <select id="getAdminByUsername" resultMap="Admin">
+		select * from admin
+		where username = #{username}
+	</select>
+
+    <select id="getAdminByEmail" resultMap="Admin">
+		select * from admin
+		where email = #{email}
+	</select>
+    <delete id="delAdminById">
+		delete from admin 
+		where id = #{id}
+	</delete>
+
+    <update id="updateStatusById">
+        update admin
+        <set>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="getUserCount" resultType="java.util.HashMap">
+        select count(id) as usercount
+        from admin
+    </select>
+
+    <update id="updateEmail">
+        update admin
+        <set>
+            <if test="email != null">
+                email = #{email},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

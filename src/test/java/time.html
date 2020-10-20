@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+请输入手机号：<input type="" name="" id="" value="" />
+<button onclick="run()">点击发送验证码</button >
+<script type="text/javascript">
+
+    var btn = document.getElementsByTagName('button')[0];
+    function run(){
+        var time = 10;//定义时间变量。用于倒计时用
+        var timer = null;//定义一个定时器；
+        timer = setInterval(function(){///开启定时器。函数内执行
+            btn.disabled = true;
+            btn.innerText = time+"秒后重新发送";    //点击发生后，按钮的文本内容变成之前定义好的时间值。
+            time--;//时间值自减
+            if(time ==0){     //判断,当时间值小于等于0的时候
+                btn.innerText='重新发送验证码'; //其文本内容变成……点击重新发送……
+                btn.disabled = false;
+                clearInterval(timer); //清除定时器
+            }
+        },1000)
+
+    }
+
+</script>
+
+</body>
+</html>
