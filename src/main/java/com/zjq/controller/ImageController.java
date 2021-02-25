@@ -43,7 +43,7 @@ public class ImageController {
                 String newName = System.currentTimeMillis() + "." + prefix;
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 dateStr = simpleDateFormat.format(date);
-                String filepath = "/usr/local/tomcat/upload_dile/cloudnote/uploads/" + dateStr + "/" + newName;
+                String filepath = "/usr/local/tomcat/upload_file/cloudnote/uploads/" + dateStr + "/" + newName;
 
                 File files = new File(filepath);
                 //打印查看上传路径
@@ -66,7 +66,7 @@ public class ImageController {
 
                 Map<String, Object> map2 = new HashMap<>();
                 Map<String, Object> map = new HashMap<>();
-                map2.put("src", "https://www.dawnsite.cn:8443/tomcatup/cloudnote/image/uploads/" + dateStr + "/" + newName);
+                map2.put("src", "https://www.dawnsite.cn:8443/tomcatup/cloudnote/uploads/" + dateStr + "/" + newName);
                 map.put("code", 0);
                 map.put("msg", "");
                 map.put("data", map2);
