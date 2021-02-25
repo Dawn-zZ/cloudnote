@@ -222,20 +222,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- 配置Tomcat插件 -->
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<port>8443</port>
-					<url>https://ciyintang.vip:8443/manager/text</url>
-					<username>root</username>
-					<password>root</password>
-					<path>/cloudnote-ssm</path>
-					<update>true</update>
-				</configuration>
-			</plugin>
 		</plugins>
 
 		<resources>

@@ -3,7 +3,7 @@
         table = layui.table, laydate = layui.laydate, laypage = layui.laypage;
     var nowTime = new Date().valueOf();
     var max = null;
-    var documentWidth = $(document).width();
+    ;var documentWidth = $(document).width()
     active = {
         search: function () {
             var nickname = $('#nickname');

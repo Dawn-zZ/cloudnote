@@ -94,7 +94,7 @@
     <!-- 底部版权声明 -->
     <div class="layui-footer footer footer-demo" id="admin-footer">
         <div class="layui-main">
-            <p><span>Copyright</span><span>&nbsp;&copy;&nbsp;</span><span>2020</span>&nbsp;<a href="https://ciyintang.vip" target="_blank">Dawn.</a><span>ALL RIGHTS RESERVED.</span></p>
+            <p><span>Copyright</span><span>&nbsp;&copy;&nbsp;</span><span>2020</span>&nbsp;<a href="https://www.dawnsite.cn" target="_blank">Dawn.</a><span>ALL RIGHTS RESERVED.</span></p>
         </div>
     </div>
 </div>

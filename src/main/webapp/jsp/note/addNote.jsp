@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="image" class="image" value="https://ciyintang.vip:8443/image/2019-12-04/1575469115766.jpeg">
+            <input type="hidden" name="image" class="image" value="https://www.dawnsite.cn:8443/image/2019-12-04/1575469115766.jpeg">
             <div class="layui-col-md4 layui-col-sm4 layui-col-xs5">
                 <div class="layui-upload-list thumbBox mag0 magt3">
                     <img class="layui-upload-img thumbImg">

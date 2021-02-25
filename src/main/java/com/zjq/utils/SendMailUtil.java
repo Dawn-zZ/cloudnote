@@ -55,7 +55,7 @@ public class SendMailUtil {
                     +"<p style='text-indent:2em;font-size:20px'>欢迎使用吾悦云笔记，您本次的验证码是"
                     +"<span style='font-size:30px; font-weight:blod; color:red;'>"+ code +"</span>"
                     +",3分钟内有效，如非本人操作，请忽略此邮件。</p><p style='text-align:right; padding-right:20px;'>"
-                    +"<a href='https://www.ciyintang.vip:8443/cloudnote-ssm' style='font-size:18px;'>吾悦云笔记</a></p>"
+                    +"<a href='https://www.dawnsite.cn:8443/cloudnote' style='font-size:18px;'>吾悦云笔记</a></p>"
                     +"<span style='font-size:18px; float:right; margin-right:60px;'>"+ sdf.format(new Date()) +"</span></body></html>";
 
             //设置邮件的正文
