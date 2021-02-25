@@ -66,7 +66,7 @@ public class ImageController {
 
                 Map<String, Object> map2 = new HashMap<>();
                 Map<String, Object> map = new HashMap<>();
-                map2.put("src", "https://www.dawnsite.cn:8443/static/cloudnote/image/uploads/" + dateStr + "/" + newName);
+                map2.put("src", "https://www.dawnsite.cn:8443/tomcatapp/cloudnote/image/uploads/" + dateStr + "/" + newName);
                 map.put("code", 0);
                 map.put("msg", "");
                 map.put("data", map2);
