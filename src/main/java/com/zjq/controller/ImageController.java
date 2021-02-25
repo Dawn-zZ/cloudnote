@@ -43,7 +43,7 @@ public class ImageController {
                 String newName = System.currentTimeMillis() + "." + prefix;
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 dateStr = simpleDateFormat.format(date);
-                String filepath = "/usr/local/tomcat/webapps/cloudnote/image/uploads" + dateStr + "/" + newName;
+                String filepath = "/usr/local/tomcat/webapps/cloudnote/image/uploads/" + dateStr + "/" + newName;
 
                 File files = new File(filepath);
                 //打印查看上传路径
