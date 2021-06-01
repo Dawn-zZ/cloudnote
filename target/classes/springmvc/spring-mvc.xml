@@ -122,6 +122,6 @@
     <bean id="sendMailUtil" class="com.zjq.utils.SendMailUtil">
         <!--  给属性赋值  name:账号   pwd:授权码 -->
         <property name="sendEmail" value="myjoycloudnotes@foxmail.com"/>
-        <property name="pwd" value="ojiixgsdniosbbdj"/>
+        <property name="pwd" value="bgsytsgtryrjbfcg"/>
     </bean>
 </beans>

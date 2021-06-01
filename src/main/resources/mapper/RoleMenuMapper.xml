@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.zjq.dao.RoleMenuDao">
 
 	<resultMap type="com.zjq.entity.RoleMenu" id="RoleMenu">
+		<result property="Id" column="id" />
 		<result property="menuId" column="menu_id" />
 		<result property="roleId" column="role_id" />
 	</resultMap>

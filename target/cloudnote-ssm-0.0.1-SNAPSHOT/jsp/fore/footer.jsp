@@ -6,7 +6,7 @@
 <body>
 <!-- 底部 -->
 <footer class="blog-footer">
-    <p><span>Copyright</span><span>&copy;</span><span>2020</span><a href="https://ciyintang.vip"
+    <p><span>Copyright</span><span>&copy;</span><span>2020-2021</span><a href="https://www.dawnsite.cn"
                                                                     target="_blank">Dawn.</a><span>ALL RIGHTS RESERVED.</span>
     </p>
 </footer>

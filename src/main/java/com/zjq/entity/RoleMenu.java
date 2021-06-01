@@ -2,9 +2,19 @@ package com.zjq.entity;
 
 public class RoleMenu {
 
+	private int Id;
+
 	private int roleId;
 	
 	private int menuId;
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
 
 	public int getRoleId() {
 		return roleId;
